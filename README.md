@@ -58,41 +58,6 @@ You can run a standard benchmark suite:
 ./build/bbd bench
 ```
 
-## Development Progress
-
-Our team has been continuously improving BBD with new features:
-
-### Core Engine
-- ✅ Efficient bitboard representation
-- ✅ Legal move generation
-- ✅ Special move handling (castling, en passant, promotions)
-- ✅ Zobrist hashing with incremental updates
-- ✅ Three-fold repetition detection
-- ✅ UCI compatibility for chess GUIs
-
-### Search Improvements
-- ✅ Alpha-Beta pruning
-- ✅ Quiescence search
-- ✅ Principal Variation Search
-- ✅ Transposition Tables
-- ✅ Reverse Futility Pruning
-- ✅ Null Move Pruning
-- ✅ Aspiration Windows
-- ✅ Killer Moves heuristic
-- ✅ History Heuristic for move ordering
-- ✅ TT move ordering
-- 🔄 Late Move Reductions (in progress)
-
-### Evaluation
-- ✅ NNUE (Neural Network) evaluation
-- ✅ Incrementally updated accumulators
-- ✅ Pesto Piece Square Tables
-
-### Code Quality
-- ✅ Comprehensive test suite
-- ✅ Automatic formatting with clang-format
-- ✅ CI/CD integration
-
 ## Testing
 
 BBD includes a comprehensive test suite to ensure correctness:
