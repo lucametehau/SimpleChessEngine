@@ -26,8 +26,8 @@ A high-performance chess engine built in **C++20**, featuring advanced search te
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/bbd.git
-cd bbd
+git clone https://github.com/BBDEngine/ChessEngine.git
+cd ChessEngine
 
 # Build the project
 cmake -DCMAKE_CXX_COMPILER=clang++ -S . -B build/
