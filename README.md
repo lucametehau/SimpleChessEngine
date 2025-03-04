@@ -1,36 +1,21 @@
-# BBD Chess Engine 🎮 ♟️
+# BBD Chess Engine
 
-<img src="https://img.shields.io/badge/version-1.0.1-blue" alt="Version 1.0.1">
-<img src="https://img.shields.io/badge/C%2B%2B-20-brightgreen" alt="C++ 20">
+[![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/BBDEngine/ChessEngine/releases)
+[![C++20](https://img.shields.io/badge/C++-20-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B20)
 
+A high-performance chess engine built in **C++20**, featuring advanced search techniques, a neural-network-based evaluation (NNUE), and an approximate **2500+ Elo** rating in self-play matches.
 
-BBD is a high-performance chess engine written in C++20. Don't ask what the name means. 😉
+## Features
 
-## ✨ Features
+- **Bitboard Representation**: 64-bit board state for efficient move generation  
+- **Search Algorithms**: Negamax with Alpha-Beta pruning, Principal Variation Search, Quiescence, Null Move & Reverse Futility Pruning, Aspiration Windows  
+- **Move Ordering**: Transposition Tables, Killer Moves, History Heuristic  
+- **Memory & Hashing**: Incremental Zobrist updates, Transposition Table for caching results  
+- **NNUE Evaluation**: Incrementally updatable neural network for position scoring  
+- **Draw Detection**: Threefold repetition checks  
+- **UCI Protocol**: Easily integrates with most chess GUIs  
 
-- 💡 **Efficient Bitboard Representation** - Representing the board as 64-bit integers for optimal performance
-- 🧠 **Advanced Search Algorithms**:
-  - Negamax with Alpha-Beta pruning
-  - Principal Variation Search (PVS)
-  - Quiescence Search
-  - Null Move Pruning
-  - Reverse Futility Pruning
-  - Aspiration Windows
-- 🔄 **Move Ordering Heuristics**:
-  - Transposition Table move ordering
-  - Killer Moves
-  - History Heuristic
-- 🔍 **Memory Optimizations**:
-  - Transposition Table
-  - Incremental Zobrist hash updating
-- 🧪 **Position Evaluation**:
-  - Neural Network (NNUE) evaluation
-  - Efficiently Updatable Neural Network
-- 🔁 **Drawing Detection**:
-  - Three-fold repetition checking
-- 🌐 **UCI Protocol Support** - Compatible with UCI chess GUIs
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -51,42 +36,29 @@ cmake --build build/
 # Run the engine
 ./build/bbd
 ```
-
-## 📋 Usage
+## Usage
 
 ### UCI Mode
 
 BBD supports the Universal Chess Interface (UCI) protocol, allowing it to be used with most chess GUIs.
-
 ```bash
 ./build/bbd
 ```
-
-Then enter UCI commands:
-
-```
-uci
-position startpos moves e2e4 c7c5
-go depth 10
-```
-
+Then interact via UCI commands (e.g., `uci`, `position startpos`, `go depth 10`).
 ### Tournament Mode
 
 BBD can also be used in tournament mode:
-
 ```bash
 ./build/bbd input_file current_position output_file
 ```
-
 ### Benchmarking
 
 You can run a standard benchmark suite:
-
 ```bash
 ./build/bbd bench
 ```
 
-## 📊 Development Progress
+## Development Progress
 
 Our team has been continuously improving BBD with new features:
 
@@ -121,24 +93,7 @@ Our team has been continuously improving BBD with new features:
 - ✅ Automatic formatting with clang-format
 - ✅ CI/CD integration
 
-## 📜 Timeline
-
-Development has been progressing steadily since December 2024:
-
-- **Week 1-2**: Core board representation and basic operations
-- **Week 3-4**: Move generation and UCI compatibility
-- **Week 5**: Basic search algorithms and alpha-beta pruning
-- **Week 6-7**: Advanced search techniques (PVS, TT, pruning methods)
-- **December 2024 - January 2025**: Refinement of search algorithms and evaluation
-
-## 👨‍💻 Contributors
-
-- 🧑‍💻 **Luca-Mihnea Metehau**: Move generation, search algorithms, UCI compatibility, evaluation improvements
-- 🧑‍💻 **Emeric Payer**: Square implementation, bitboard implementation, argument parser, PVS, transposition tables
-- 🧑‍💻 **Georgy Salakhutdinov**: CMake setup, Zobrist hashing, castling rights management, board state tracking, 3-fold repetition detection
-- 🧑‍💻 **Georgii Kuznetsov**: Board class basics, Formatting, null move pruning, time search, testing infrastructure (google tests), Neural Network evaluation
-
-## 🧪 Testing
+## Testing
 
 BBD includes a comprehensive test suite to ensure correctness:
 
@@ -147,7 +102,7 @@ BBD includes a comprehensive test suite to ensure correctness:
 cmake --build build/ --target run-tests
 ```
 
-## 🔧 Development Tools
+##  Development Tools
 
 - **Formatting**: 
   ```bash
@@ -159,7 +114,7 @@ cmake --build build/ --target run-tests
   cmake --build build/ --target format-check
   ```
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 Special thanks to the chess programming community for their invaluable resources and algorithms that have inspired this engine.
 
