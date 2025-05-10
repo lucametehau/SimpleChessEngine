@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.15...3.31)
 project(bbd VERSION 1.0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE) # enables LTO
-set(EVAL_PATH ./drill/nnue_v1-100/quantised.bin)
+set(EVAL_PATH data/model.nnue)
 
 ############################################################################
 find_program(CLANG_FORMAT "clang-format")
