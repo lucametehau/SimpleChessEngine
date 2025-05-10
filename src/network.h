@@ -15,7 +15,7 @@ class NNUENetwork
 {
   public:
     static constexpr int16_t INPUT_SIZE = 768;
-    static constexpr int16_t HIDDEN_SIZE = 64;
+    static constexpr int16_t HIDDEN_SIZE = 128;
     static const int16_t evaluation_scale = 400;
     static constexpr int16_t QA = 255;
     static constexpr int16_t QB = 64;
