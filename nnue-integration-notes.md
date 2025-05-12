@@ -1,14 +1,16 @@
 Model NNUE Default Settings 
 
+
 374281 nodes 3898760 nps
 
 
-Elo   | 69.64 +- 13.44 (95%)
-SPRT  | 8.0+0.08s Threads=1 Hash=8MB
-LLR   | 2.95 (-2.94, 2.94) [0.00, 3.00]
-Games | N: 1264 W: 470 L: 220 D: 574
-Penta | [10, 97, 237, 209, 79]
+Compared to nnue-hl128crelu 
 
+Elo   | 32.24 +- 9.18 (95%)
+SPRT  | 8.0+0.08s Threads=1 Hash=8MB
+LLR   | 2.99 (-2.94, 2.94) [0.00, 3.00]
+Games | N: 2756 W: 866 L: 611 D: 1279
+Penta | [59, 276, 511, 415, 117]
 
 mod activation;
 mod inputs;
