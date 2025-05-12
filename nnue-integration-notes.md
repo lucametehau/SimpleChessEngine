@@ -1,5 +1,14 @@
 Model NNUE Default Settings 
 
+383670 nodes 
+
+Elo   | -62.04 +- 21.37 (95%)
+SPRT  | 2.0+0.02s Threads=1 Hash=8MB
+LLR   | -1.16 (-2.94, 2.94) [0.00, 3.00]
+Games | N: 566 W: 119 L: 219 D: 228
+Penta | [38, 87, 105, 43, 10]
+
+
 // Network architecture settings
 pub type InputFeatures = inputs::Chess768;
 pub type OutputBuckets = outputs::Single;
