@@ -6,6 +6,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+#include <algorithm> 
 
 namespace BBD::NNUE
 {
@@ -28,6 +29,16 @@ class NNUENetwork
     constexpr static float f_clipped_relu(float x)
     {
         return std::max(0.0f, std::min(x, 1.0f));
+    }
+
+    constexpr static int16_t sc_relu(int16_t x) { 
+        int16_t v = std::clamp(x, int16_t(0), QA);
+        return static_cast<uint16_t>(v * v);
+    }
+
+    constexpr static float f_sc_relu(float x) { 
+        float c = std::clamp(x, 0.0f, 1.0f);
+        return c * c;
     }
 
   private:
@@ -86,8 +97,8 @@ class NNUENetwork
         for (int i = 0; i < HIDDEN_SIZE; ++i)
         {
             // y = o1(p(a)) + o2(p(â)) + c
-            output += NNUENetwork::clipped_relu(acc[perspective].values[i]) * weights2[0][i];
-            output += NNUENetwork::clipped_relu(acc[1 - perspective].values[i]) * weights2[1][i];
+            output += NNUENetwork::sc_relu(acc[perspective].values[i]) * weights2[0][i];
+            output += NNUENetwork::sc_relu(acc[1 - perspective].values[i]) * weights2[1][i];
         }
 
         output *= evaluation_scale;

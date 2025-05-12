@@ -1,13 +1,21 @@
 Model NNUE Default Settings 
 
-383670 nodes 
+389297 nodes 4055177 nps
 
-Elo   | -62.04 +- 21.37 (95%)
-SPRT  | 2.0+0.02s Threads=1 Hash=8MB
-LLR   | -1.16 (-2.94, 2.94) [0.00, 3.00]
-Games | N: 566 W: 119 L: 219 D: 228
-Penta | [38, 87, 105, 43, 10]
+Elo   | 69.64 +- 13.44 (95%)
+SPRT  | 8.0+0.08s Threads=1 Hash=8MB
+LLR   | 2.95 (-2.94, 2.94) [0.00, 3.00]
+Games | N: 1264 W: 470 L: 220 D: 574
+Penta | [10, 97, 237, 209, 79]
 
+
+mod activation;
+mod inputs;
+mod network;
+mod outputs;
+mod trainer;
+
+use trainer::{lr, wdl, DirectSequentialDataLoader, LocalSettings, Trainer, TrainingSchedule, TrainingSteps};
 
 // Network architecture settings
 pub type InputFeatures = inputs::Chess768;
@@ -46,10 +54,10 @@ fn main() {
             batch_size: 16_384,
             batches_per_superbatch: 6104,
             start_superbatch: 1,
-            end_superbatch: 20,
+            end_superbatch: 40,
         },
         wdl_scheduler: wdl::ConstantWDL { value: 0.75 },
-        lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.1, step: 8 },
+        lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.1, step: 25 },
         save_rate: 10,
     };
 
@@ -57,4 +65,3 @@ fn main() {
 
     trainer.run(loader, &schedule, &settings);
 }
-
