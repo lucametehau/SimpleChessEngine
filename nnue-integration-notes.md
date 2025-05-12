@@ -2,6 +2,11 @@ Model NNUE Default Settings
 
 360964 nodes 4149011 nps
 
+Elo   | -35.10 +- 10.94 (95%)
+SPRT  | 8.0+0.08s Threads=1 Hash=8MB
+LLR   | -2.54 (-2.94, 2.94) [0.00, 3.00]
+Games | N: 2056 W: 477 L: 684 D: 895
+Penta | [111, 280, 383, 213, 41]
 
 mod activation;
 mod inputs;
