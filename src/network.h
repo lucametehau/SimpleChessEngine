@@ -32,8 +32,10 @@ class NNUENetwork
     }
 
     constexpr static int16_t sc_relu(int16_t x) { 
-        int16_t v = std::clamp(x, int16_t(0), QA);
-        return static_cast<uint16_t>(v * v);
+        int32_t v = std::clamp(x, int16_t(0), QA); 
+        int32_t sq = v * v; 
+        int32_t y = sq / QA; 
+        return static_cast<int16_t>( std::clamp(y, int32_t(0), int32_t(QA)) ); 
     }
 
     constexpr static float f_sc_relu(float x) { 

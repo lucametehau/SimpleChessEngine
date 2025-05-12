@@ -1,6 +1,7 @@
 Model NNUE Default Settings 
 
-389297 nodes 4055177 nps
+374281 nodes 3898760 nps
+
 
 Elo   | 69.64 +- 13.44 (95%)
 SPRT  | 8.0+0.08s Threads=1 Hash=8MB
