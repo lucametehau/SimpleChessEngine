@@ -1,7 +1,7 @@
 Model NNUE Default Settings 
 
 
-374281 nodes 3898760 nps
+366225 nodes 4635759 nps
 
 
 Compared to nnue-hl128crelu 
@@ -57,7 +57,7 @@ fn main() {
             batch_size: 16_384,
             batches_per_superbatch: 6104,
             start_superbatch: 1,
-            end_superbatch: 40,
+            end_superbatch: 80,
         },
         wdl_scheduler: wdl::ConstantWDL { value: 0.75 },
         lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.1, step: 25 },
