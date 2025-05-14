@@ -20,6 +20,15 @@ class NNUENetwork
     static const int16_t evaluation_scale = 400;
     static constexpr int16_t QA = 255;
     static constexpr int16_t QB = 64;
+
+    constexpr static int16_t relu(int16_t x) {
+        return x > 0 ? x : 0;
+    }
+
+    constexpr static float f_relu(float x) {
+        return x > 0.0f ? x : 0.0f;
+    }
+
     constexpr static int clipped_relu(int16_t x)
     {
         auto v = std::min(std::max(x, int16_t(0)), QA);
@@ -99,8 +108,8 @@ class NNUENetwork
         for (int i = 0; i < HIDDEN_SIZE; ++i)
         {
             // y = o1(p(a)) + o2(p(â)) + c
-            output += NNUENetwork::sc_relu(acc[perspective].values[i]) * weights2[0][i];
-            output += NNUENetwork::sc_relu(acc[1 - perspective].values[i]) * weights2[1][i];
+            output += NNUENetwork::relu(acc[perspective].values[i]) * weights2[0][i];
+            output += NNUENetwork::relu(acc[1 - perspective].values[i]) * weights2[1][i];
         }
 
         output *= evaluation_scale;
