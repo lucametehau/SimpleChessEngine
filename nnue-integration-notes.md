@@ -1,8 +1,7 @@
 Model NNUE Default Settings 
 
 
-456633 nodes 4433330 nps
-
+310482 nodes 3268231 nps
 
 Compared to nnue-hl128screlu-80epochs 
 
@@ -19,12 +18,12 @@ mod network;
 mod outputs;
 mod trainer;
 
-use trainer::{lr, wdl, DirectSequentialDataLoader, LocalSettings, Trainer, TrainingSchedule, TrainingSteps};
+use trainer::{lr, wdl::{ConstantWDL, SigmoidMPE}, DirectSequentialDataLoader, LocalSettings, Trainer, TrainingSchedule, TrainingSteps};
 
 // Network architecture settings
 pub type InputFeatures = inputs::Chess768;
 pub type OutputBuckets = outputs::Single;
-pub type Activation = activation::ReLU;
+pub type Activation = activation::SCReLU;
 pub const HL_SIZE: usize = 128;
 
 // Quantisations
@@ -60,7 +59,8 @@ fn main() {
             start_superbatch: 1,
             end_superbatch: 80,
         },
-        wdl_scheduler: wdl::ConstantWDL { value: 0.75 },
+        // wdl_scheduler: wdl::ConstantWDL { value: 0.75 },
+        wdl_scheduler: SigmoidMPE { scale: 2.5 }, 
         lr_scheduler: lr::StepLR { start: 0.001, gamma: 0.1, step: 25 },
         save_rate: 10,
     };
