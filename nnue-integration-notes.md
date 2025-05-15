@@ -1,7 +1,8 @@
 Model NNUE Default Settings 
 
 
-310482 nodes 3268231 nps
+374960 nodes 3787474 nps
+
 
 Compared to nnue-hl128screlu-80epochs 
 

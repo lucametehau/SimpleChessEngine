@@ -108,8 +108,8 @@ class NNUENetwork
         for (int i = 0; i < HIDDEN_SIZE; ++i)
         {
             // y = o1(p(a)) + o2(p(â)) + c
-            output += NNUENetwork::relu(acc[perspective].values[i]) * weights2[0][i];
-            output += NNUENetwork::relu(acc[1 - perspective].values[i]) * weights2[1][i];
+            output += NNUENetwork::sc_relu(acc[perspective].values[i]) * weights2[0][i];
+            output += NNUENetwork::sc_relu(acc[1 - perspective].values[i]) * weights2[1][i];
         }
 
         output *= evaluation_scale;
