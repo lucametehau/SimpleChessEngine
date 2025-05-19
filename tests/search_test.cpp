@@ -20,7 +20,7 @@ class SearchTest : public ::testing::Test
 
 TEST_F(SearchTest, TimeSearch1sec)
 {
-    BBD::Engine::init("../../drill/nnue_v1-100/quantised.bin");
+    BBD::Engine::init("../../data/quantised.bin");
     Board board;
     SearchLimiter limiter;
     limiter.set_time(1000);

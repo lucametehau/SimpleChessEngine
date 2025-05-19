@@ -16,7 +16,7 @@ namespace BBD::Engine
 
 constexpr int MAX_DEPTH = 100;
 
-inline void init(const std::string &weitghts_path = "./drill/nnue_v1-100/quantised.bin")
+inline void init(const std::string &weitghts_path = "../data/quantised.bin")
 {
     BBD::attacks::init();
     BBD::Zobrist::init();
