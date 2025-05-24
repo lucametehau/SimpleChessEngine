@@ -5,7 +5,7 @@ SRC = $(wildcard ../*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 %.o: %.cpp
-	clang++ $(BUILD_FLAGS) $(RFLAGS) -o $@ -c $<
+	clang++ -fuse-ld=lld $(BUILD_FLAGS) $(RFLAGS) -o $@ -c $<
 
 native: $(OBJ)
-	clang++ $(OBJ) $(BUILD_FLAGS) -o $(EXE)
+	clang++ -fuse-ld=lld $(OBJ) $(BUILD_FLAGS) -o $(EXE)
