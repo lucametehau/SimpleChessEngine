@@ -809,15 +809,17 @@ class Board
 
     void refresh_accumulator_color(Color color)
     {
-        std::array<NNUE::NNUENetwork::Accumulator, 2> &accumulator = accumulators.back();
-        accumulator[color] = NNUE::NNUENetwork::Accumulator();
+        NNUE::NNUENetwork::Accumulator &accumulator = accumulators.back()[color];
+        accumulator = NNUE::NNUENetwork::Accumulator();
         Square king_square = pieces[color][PieceTypes::KING].lsb_index();
         for (Square sq = 0; sq < 64; sq++)
         {
             Piece piece = squares[sq];
-            if (piece && piece.color() == color)
+            if (piece)
             {
-                accumulator[color].add_feature(feature_index(piece, sq, king_square, color));
+                accumulator.add_feature(feature_index(piece, sq, king_square, color));
+                std::cout << int(color) << " " << feature_index(piece, sq, king_square, color) << " "
+                          << int(piece) << " " << int(sq) << " " << int(king_square) << std::endl;
             }
         }
     }
