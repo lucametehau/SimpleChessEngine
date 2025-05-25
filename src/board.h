@@ -818,8 +818,6 @@ class Board
             if (piece)
             {
                 accumulator.add_feature(feature_index(piece, sq, king_square, color));
-                std::cout << int(color) << " " << feature_index(piece, sq, king_square, color) << " "
-                          << int(piece) << " " << int(sq) << " " << int(king_square) << std::endl;
             }
         }
     }
