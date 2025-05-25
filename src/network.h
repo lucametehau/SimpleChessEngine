@@ -1,12 +1,12 @@
 #pragma once
 
 #include "incbin.h"
+#include <algorithm>
 #include <array>
 #include <cassert>
 #include <cstring>
 #include <fstream>
 #include <iostream>
-#include <algorithm> 
 
 namespace BBD::NNUE
 {
@@ -21,12 +21,14 @@ class NNUENetwork
     static constexpr int16_t QA = 255;
     static constexpr int16_t QB = 64;
 
-    constexpr static int16_t relu(int16_t x) { 
-        return x > 0 ? x : 0; 
+    constexpr static int16_t relu(int16_t x)
+    {
+        return x > 0 ? x : 0;
     }
 
-    constexpr static float f_relu(float x) { 
-        return x > 0.0f ? x : 0.0f; 
+    constexpr static float f_relu(float x)
+    {
+        return x > 0.0f ? x : 0.0f;
     }
 
     constexpr static int clipped_relu(int16_t x)
@@ -40,14 +42,16 @@ class NNUENetwork
         return std::max(0.0f, std::min(x, 1.0f));
     }
 
-    constexpr static int16_t sc_relu(int16_t x) { 
-        int32_t v = std::clamp(x, int16_t(0), QA); 
-        int32_t sq = v * v; 
-        int32_t y = sq / QA; 
-        return static_cast<int16_t>( std::clamp(y, int32_t(0), int32_t(QA)) ); 
+    constexpr static int16_t sc_relu(int16_t x)
+    {
+        int32_t v = std::clamp(x, int16_t(0), QA);
+        int32_t sq = v * v;
+        int32_t y = sq / QA;
+        return static_cast<int16_t>(std::clamp(y, int32_t(0), int32_t(QA)));
     }
 
-    constexpr static float f_sc_relu(float x) { 
+    constexpr static float f_sc_relu(float x)
+    {
         float c = std::clamp(x, 0.0f, 1.0f);
         return c * c;
     }

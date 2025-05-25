@@ -76,7 +76,7 @@ class Move
         return PieceType((type() & 3) + 1);
     }
 
-    std::string to_string()
+    constexpr std::string to_string() const
     {
         std::string move_str;
         move_str += from().to_string();

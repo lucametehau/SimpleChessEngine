@@ -9,8 +9,8 @@
 #include "square.h"
 #include "zobrist.h"
 #include <array>
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace BBD
 {
@@ -351,11 +351,15 @@ class Board
         Square from = move.from();
         Square to = move.to();
         Piece captured = Pieces::NO_PIECE;
+        bool refresh_needed = false;
 
         // castling 0x1111 - bit 0: WK, bit 1: WQ, bit 2: BK, bit 3: BQ
         // update castling when King moves
         if (squares[from].type() == PieceTypes::KING)
         {
+            if ((from & 4) != (to & 4))
+                refresh_needed = true;
+
             if (current_color == Colors::WHITE)
             {
                 castling_rights &= 0b1100; // remove for white
@@ -560,7 +564,7 @@ class Board
         if (current_color == Colors::BLACK)
             full_moves++;
 
-        if (squares[to].type() == PieceTypes::KING && (from & 4) != (to & 4))
+        if (refresh_needed)
         {
             // refresh needed for side to move
             refresh_accumulator_color(current_color);
@@ -585,6 +589,20 @@ class Board
 
         pinned_pieces() = get_pinned_pieces();
         checkers() = get_checkers();
+
+        // int eval = NNUE::NNUENetwork::evaluate(accumulators.back(), current_color);
+        // accumulators.push_back(accumulators.back());
+        // refresh_accumulators();
+        // int eval_refresh = NNUE::NNUENetwork::evaluate(accumulators.back(), current_color);
+        // accumulators.pop_back();
+
+        // if (eval != eval_refresh)
+        // {
+        //     std::cerr << "NNUE evaluation mismatch: " << eval << " vs " << eval_refresh << std::endl;
+        //     std::cout << move.to_string() << std::endl;
+        //     std::cout << "Current color: " << (current_color == Colors::WHITE ? "White" : "Black") << std::endl;
+        //     throw std::runtime_error("NNUE evaluation mismatch after move");
+        // }
     };
 
     void make_null_move()
